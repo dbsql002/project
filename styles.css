@@ -98,15 +98,19 @@ footer {
     display: flex;
     justify-content: space-around;
     margin-bottom: 40px;
+    flex-wrap: wrap; /* 화면 크기에 따라 카드를 줄바꿈 */
 }
 
 .destination-card {
     width: 30%;
+    margin: 10px; /* 간격 조정 */
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     border-radius: 10px;
     overflow: hidden;
     text-align: center;
     background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s; /* 부드러운 변환 효과 */
+    cursor: pointer; /* 호버 시 커서 변경 */
 }
 
 .destination-image {
@@ -120,3 +124,76 @@ footer {
     font-size: 16px;
     color: #333;
 }
+
+/* 호버 효과 추가 */
+.destination-card:hover {
+    transform: translateY(-5px); /* 카드를 약간 위로 이동 */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* 그림자 강조 */
+}
+
+.special-deals {
+    padding: 40px 20px;
+    background-color: #ffffff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.special-deals h2 {
+    color: #003d66;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+.deal-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.deal-card {
+    width: 300px;
+    margin: 10px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.deal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+.deal-image {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.deal-content {
+    padding: 15px;
+    text-align: left;
+}
+
+.deal-content p {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d44;
+    float: right;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+
