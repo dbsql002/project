@@ -1,0 +1,115 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fa;
+    color: #333;
+}
+
+header {
+    background-color: #0073e6;
+    color: #ffffff;
+    padding: 20px 40px;
+}
+
+header img {
+    width: 120px;
+    height: auto;
+    margin-right: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+main {
+    padding: 40px 20px;
+}
+
+.search-fields {
+    background-color: #e8eff5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-fields input[type="text"] {
+    border: 2px solid #0073e6;
+    border-radius: 5px;
+    padding: 10px;
+    width: calc(50% - 22px);
+    margin-right: 10px;
+}
+
+.search-fields button {
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.flight-info p {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+footer {
+    background-color: #003d66;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+/* Recommended Destinations Cards */
+.recommended-destinations {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+}
+
+.destination-card {
+    width: 30%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #fff;
+}
+
+.destination-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.destination-card p {
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+}
