@@ -10,12 +10,18 @@ header {
     background-color: #0073e6;
     color: #ffffff;
     padding: 20px 40px;
+    display: flex;
+    justify-content: space-between; /* 로고와 네비게이션을 양쪽 끝으로 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
 }
 
 header img {
     width: 120px;
     height: auto;
-    margin-right: 20px;
+}
+
+nav {
+    display: flex;
 }
 
 nav ul {
@@ -36,6 +42,7 @@ nav ul li a {
     font-size: 16px;
     font-weight: bold;
 }
+
 
 main {
     padding: 40px 20px;
