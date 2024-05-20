@@ -15,3 +15,5 @@ CREATE TABLE IF NOT EXISTS register (
 -- 인덱스 추가 (선택적)
 -- 이메일(사용자 이름)에 대한 검색 최적화를 위해 인덱스를 추가합니다.
 CREATE INDEX idx_username ON register (username);
+GRANT INSERT ON ticket_java.register TO 'ec2-user'@'host(여기 본인ip로수정)';
+
