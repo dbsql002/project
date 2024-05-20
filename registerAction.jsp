@@ -1,96 +1,71 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>회원가입</title>
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <style>
-        /* 회원가입 전용 스타일 */
-        .register-form {
-            margin: 20px auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 400px; /* 폼의 너비 조정 */
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.PrintWriter" %>
+
+<%
+// 데이터베이스 연결 정보
+String url = "jdbc:mariadb://10.250.3.97:3306/ticket_java"; // 데이터베이스 URL
+String dbUsername = "ec2-user"; // 데이터베이스 사용자 이름
+String dbPassword = "password"; // 데이터베이스 비밀번호
+
+// 회원가입 폼에서 전송된 데이터 받아오기
+String inputUsername = request.getParameter("username");
+String inputPassword = request.getParameter("password");
+String address = request.getParameter("address");
+String phone = request.getParameter("phone");
+
+// 데이터베이스 연결
+Connection conn = null;
+PreparedStatement pstmt = null;
+try {
+    Class.forName("org.mariadb.jdbc.Driver");
+    conn = DriverManager.getConnection(url, dbUsername, dbPassword);
+
+    // SQL 쿼리 작성
+    String sql = "INSERT INTO register (username, password, address, phone) VALUES (?, ?, ?, ?)";
+
+    // PreparedStatement를 사용하여 SQL 쿼리 실행
+    pstmt = conn.prepareStatement(sql);
+    pstmt.setString(1, inputUsername);
+    pstmt.setString(2, inputPassword);
+    pstmt.setString(3, address);
+    pstmt.setString(4, phone);
+
+    // 쿼리 실행
+    int rowsAffected = pstmt.executeUpdate();
+
+    if (rowsAffected > 0) {
+        // 회원가입 성공
+        out.println("<script>alert('회원가입에 성공했습니다. 로그인 페이지로 이동합니다.');</script>");
+        response.sendRedirect("login.jsp");
+    } else {
+        // 회원가입 실패
+        out.println("<script>alert('회원가입에 실패했습니다. 다시 시도해주세요.');</script>");
+        response.sendRedirect("register.jsp");
+    }
+} catch (SQLException e) {
+    // 데이터베이스 연결 오류 발생
+    out.println("<h1>데이터베이스 연결 오류 발생!</h1>");
+    e.printStackTrace();
+} catch (ClassNotFoundException e) {
+    // JDBC 드라이버 클래스를 찾을 수 없음
+    out.println("<h1>JDBC 드라이버 클래스를 찾을 수 없습니다!</h1>");
+    e.printStackTrace();
+} finally {
+    // 리소스 해제
+    if (pstmt != null) {
+        try {
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        .register-form h2 {
-            margin-bottom: 10px;
+    }
+    if (conn != null) {
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        .register-form form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .register-form label {
-            margin-bottom: 8px;
-        }
-
-        .register-form input[type="text"],
-        .register-form input[type="password"] {
-            padding: 10px;
-            margin-bottom: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        .register-form input[type="submit"] {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .register-form input[type="submit"]:hover {
-            background-color: #555;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <img src="https://ticket-java-images.s3.ap-northeast-2.amazonaws.com/indexlogo.png" alt="Interpark Logo" class="logo">
-        <input type="text" placeholder="Search..." class="search-bar">
-        <div class="user-links">
-            <a href="login.jsp">로그인</a>
-            <a href="register.jsp">회원가입</a>
-            <a href="myPage.jsp">마이페이지</a>
-        </div>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="index.jsp">홈</a></li>
-            <li><a href="#">콘서트</a></li>
-            <li><a href="#">스포츠</a></li>
-            <li><a href="#">전시/행사</a></li>
-            <li><a href="#">컬렉션</a></li>
-            <li><a href="#">더보기</a></li>
-        </ul>
-    </nav>
-    <section class="register-form">
-        <h2>회원가입</h2>
-        <form action="registerAction.jsp" method="POST">
-            <label for="username">아이디:</label>
-            <input type="text" id="username" name="username" required>
-
-            <label for="password">비밀번호:</label>
-            <input type="password" id="password" name="password" required>
-
-            <label for="address">주소:</label>
-            <input type="text" id="address" name="address" required>
-
-            <label for="phone">핸드폰번호:</label>
-            <input type="text" id="phone" name="phone" required>
-
-            <input type="submit" value="가입하기">
-        </form>
-    </section>
-    <footer>
-        <p>Copyright © Interpark Tickets 2024</p>
-    </footer>
-</body>
-</html>
+    }
+}
+%>
