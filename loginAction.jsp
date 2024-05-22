@@ -4,8 +4,8 @@
 
 <%
 // 데이터베이스 연결 정보
-String url = "jdbc:mariadb://10.250.1.139:3306/ticket_java"; // 데이터베이스 URL
-String dbUsername = "ec2-user"; // 데이터베이스 사용자 이름
+String url = "jdbc:mariadb://ca-database1.cnok84amevre.ap-northeast-2.rds.amazonaws.com:3306/cloud_air"; // 데이터베이스 URL
+String dbUsername = "admin"; // 데이터베이스 사용자 이름
 String dbPassword = "password"; // 데이터베이스 비밀번호
 
 // 로그인 폼에서 전송된 데이터 받아오기
