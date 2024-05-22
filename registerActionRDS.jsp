@@ -6,9 +6,9 @@
 <%
 // 데이터베이스 연결 정보
 // 데이터베이스 연결 정보
-String url = "jdbc:mariadb://your-rds-endpoint:3306/cloud_air"; // RDS 엔드포인트로 변경된 데이터베이스 URL
-String dbUsername = "your-rds-username"; // RDS 설정 사용자 이름
-String dbPassword = "your-rds-password"; // RDS 설정 비밀번호
+String url = "jdbc:mariadb://ca-database1.cnok84amevre.ap-northeast-2.rds.amazonaws.com:3306/cloud_air"; // RDS 엔드포인트로 변경된 데이터베이스 URL
+String dbUsername = "admin"; // RDS 설정 사용자 이름
+String dbPassword = "password"; // RDS 설정 비밀번호
 
 
 // 회원가입 폼에서 전송된 데이터 받아오기
