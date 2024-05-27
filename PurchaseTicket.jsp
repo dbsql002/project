@@ -9,42 +9,37 @@
             font-family: Arial, sans-serif;
             background-color: #f0f2f5;
         }
-      header {
-    background-color: #0073e6;
-    color: #ffffff;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between; /* 로고와 네비게이션을 양쪽 끝으로 정렬 */
-    align-items: center; /* 세로 중앙 정렬 */
-}
-
-header img {
-    width: 120px;
-    height: auto;
-}
-
-nav {
-    display: flex;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-}
+        header {
+            background-color: #0073e6;
+            color: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header img {
+            width: 400px;
+            height: auto;
+        }
+        nav {
+            display: flex;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+        }
         .container {
             width: 90%;
             max-width: 1000px;
@@ -60,7 +55,6 @@ nav ul li a {
             margin-bottom: 20px;
             border-radius: 10px;
             border: 1px solid #ccc;
-            overflow: hidden;
         }
         .ticket-details {
             display: flex;
@@ -78,7 +72,7 @@ nav ul li a {
             color: #0073e6;
             margin-right: 10px;
         }
-        .book-button {
+        .book-button, .submit-button {
             padding: 10px 20px;
             background-color: #0073e6;
             color: white;
@@ -97,50 +91,36 @@ nav ul li a {
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-        .submit-button {
-            width: 100%;
-            padding: 10px;
-            background-color: #0073e6;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-        }
     </style>
 </head>
-   <header>
-        <img src="logo.png" alt="항공사 로고">
+<body>
+    <header>
+        <img src="https://ca-cloud-bucket.s3.ap-northeast-2.amazonaws.com/%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A3%8C/CloudAir.png" alt="항공사 로고">
         <nav>
             <ul>
                 <li><a href="#home">메인</a></li>
                 <li><a href="#booking">예약</a></li>
-                <li><a href="login.jsp">로그인</a></li>
+              <li><a href="login.jsp">로그아웃</a></li>
             </ul>
         </nav>
     </header>
-<body>
     <div class="container">
         <div class="ticket-info">
             <div class="ticket-details">
-                <span class="flight-icon">&#9992;</span> <!-- Plane icon -->
-                <span class="details"><strong>Flight:</strong> KE2118</span>
-                <span class="details"><strong>From:</strong> KIX Osaka/Kansai → GMP Seoul/Gimpo</span>
-                <span class="details"><strong>Date:</strong> 2024-05-25 (Sat)</span>
-                <span class="details"><strong>Time:</strong> 11:55 - 13:50</span>
+                <span class="flight-icon">&#9992;</span>
+                <span class="details"><strong>Flight:</strong> KE112</span>
+                <span class="details"><strong>From:</strong> ICN Seoul/Incheon → HND Tokyo/Haneda</span>
+                <span class="details"><strong>Date:</strong> 2024-09-08 </span>
+                <span class="details"><strong>Time:</strong> 09:00 - 11:15</span>
                 <span class="details"><strong>Class:</strong> Business (J)</span>
             </div>
-            
         </div>
         <div class="passenger-form">
             <div class="section-header">Passenger Information</div>
             <div class="form-field">
-                <label>Full Name:</label>
-                <input type="text" class="form-input" placeholder="e.g., KIM YUNBI">
+                <label>User ID</label>
+                <input type="text" class="form-input" placeholder="e.g., KIMYUNBI">
             </div>
-           
-            
             <div class="form-field">
                 <label>Gender:</label>
                 <select class="form-input">
@@ -149,11 +129,8 @@ nav ul li a {
                     <option>Other</option>
                 </select>
             </div>
-            <div class="form-field">
-                <label>Date of Birth:</label>
-                <input type="date" class="form-input">
-            </div>
-            <button class="submit-button">Complete Purchase</button>
+            
+          <button class="submit-button" onclick="location.href='/purchaseAction.jsp';">Complete Purchase</button>
         </div>
     </div>
 </body>
